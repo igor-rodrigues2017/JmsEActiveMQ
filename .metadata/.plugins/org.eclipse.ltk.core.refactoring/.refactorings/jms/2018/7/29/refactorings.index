@@ -1,0 +1,26 @@
+1531840813588	Delete element
+1531840830831	Delete element
+1531841003075	Delete element
+1531920078575	Rename local variable 'destination'
+1531922782786	Rename type 'TesteConsumer'
+1531922808008	Rename type 'TesteConsumerRecive'
+1531922828579	Copy compilation unit
+1531942215438	Copy compilation unit
+1532006648500	Copy compilation unit
+1532008425161	Move compilation units
+1532011136577	Move compilation unit
+1532011159008	Move compilation unit
+1532011163895	Delete element
+1532011173225	Copy compilation units
+1532011197822	Rename type 'TesteConsumerMessageListener'
+1532011207458	Rename type 'TesteProducer'
+1532012201370	Rename local variable 'fila'
+1532012277432	Rename local variable 'fila'
+1532012812697	Rename type 'TesteConsumerMessageListenerTopic'
+1532012824230	Copy compilation unit
+1532015453942	Copy compilation unit
+1532017637690	Rename resource 'NewFile.xml'
+1532095040355	Delete element
+1532095886471	Extract local variable 'xml'
+1532095900076	Rename local variable 'xml'
+1532098343475	Copy compilation unit

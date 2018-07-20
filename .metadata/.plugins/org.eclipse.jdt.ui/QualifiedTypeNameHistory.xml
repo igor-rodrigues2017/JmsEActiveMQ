@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="javax.naming.InitialContext"/>
+    <fullyQualifiedTypeName name="javax.jms.ConnectionFactory"/>
+    <fullyQualifiedTypeName name="com.sun.tools.javac.parser.Scanner"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="javax.jms.Session"/>
+    <fullyQualifiedTypeName name="javax.jms.Destination"/>
+    <fullyQualifiedTypeName name="javax.jms.MessageListener"/>
+    <fullyQualifiedTypeName name="java.util.Properties"/>
+    <fullyQualifiedTypeName name="javax.jms.Queue"/>
+    <fullyQualifiedTypeName name="javax.jms.TextMessage"/>
+    <fullyQualifiedTypeName name="javax.jms.Topic"/>
+</qualifiedTypeNameHistroy>

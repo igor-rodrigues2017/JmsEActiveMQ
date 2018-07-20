@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<broker ... >
+<plugins>
+	<simpleAuthenticationPlugin
+		anonymousAccessAllowed="false">
+		<users>
+			<authenticationUser username="admin"
+				password="senha" groups="users,admins" />
+			<authenticationUser username="user"
+				password="senha" groups="users" />
+			<authenticationUser username="guest"
+				password="senha" groups="guests" />
+		</users>
+	</simpleAuthenticationPlugin>
+	<authorizationPlugin>
+		<map>
+			<authorizationMap>
+				<authorizationEntries>
+					<authorizationEntry queue="financeiro"
+						read="users" write="users" admin="users" />
+					<authorizationEntry topic="comercial"
+						read="users" write="users" admin="users" />
+					<authorizationEntry topic="ActiveMQ.Advisory.>"
+						read="users,admins" write="users,admins" admin="users,admins" />
+				</authorizationEntries>
+				<tempDestinationAuthorizationEntry>
+					<tempDestinationAuthorizationEntry
+						read="admin" write="admin" admin="admin" />
+				</tempDestinationAuthorizationEntry>
+			</authorizationMap>
+		</map>
+	</authorizationPlugin>
+</plugins>
+<!-- RESTANTE OMITIDO -->
+</broker>

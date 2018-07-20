@@ -1,0 +1,40 @@
+package br.com.igor.jms;
+
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.Destination;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
+import javax.naming.InitialContext;
+
+public class TesteProducer {
+
+	@SuppressWarnings("resource")
+	public static void main(String[] args) throws Exception {
+		// contexto para fazer o lookup da conexeção do ActieMQ -
+		// As propriedades são definidas no arquivo jndi.properties
+		InitialContext context = new InitialContext();
+
+		// nome definido na documentação do ActiveMQ
+		ConnectionFactory cf = (ConnectionFactory) context.lookup("ConnectionFactory");
+		Connection connection = cf.createConnection();
+
+		connection.start();
+
+		// session necessária para criar o consumer
+		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+		// pegamos a fila que foi criada no MOM, configurado no jndi.properties
+		Destination fila = (Destination) context.lookup("financeiro");
+
+		// producer pega a fila e recebe a menssagem
+		MessageProducer producer = session.createProducer(fila);
+		
+		
+
+
+		session.close();
+		connection.close();
+		context.close();
+	}
+
+}

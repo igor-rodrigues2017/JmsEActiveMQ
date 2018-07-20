@@ -1,0 +1,9 @@
+package br.com.igor.jms;
+
+public class TesteConsumer {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

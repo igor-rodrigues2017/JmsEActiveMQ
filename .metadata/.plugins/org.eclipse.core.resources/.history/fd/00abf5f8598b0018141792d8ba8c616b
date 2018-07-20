@@ -1,0 +1,57 @@
+package br.com.igor.jms;
+
+import java.util.Enumeration;
+import java.util.Properties;
+
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.Destination;
+import javax.jms.MessageProducer;
+import javax.jms.Queue;
+import javax.jms.QueueBrowser;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+import javax.naming.InitialContext;
+
+public class TesteQueueBrowser {
+
+	public static void main(String[] args) throws Exception {
+		// contexto para fazer o lookup da conexeção do ActieMQ -
+		// Colocando o jndi.properties no código java
+		
+		Properties properties = new Properties();
+		properties.setProperty("java.naming.factory.initial", "org.apache.activemq.jndi.ActiveMQInitialContextFactory");
+		properties.setProperty("java.naming.provider.url", "tcp://10.0.0.10:61616");
+		properties.setProperty("queue.financeiro", "fila.financeiro");
+		
+		
+		InitialContext context = new InitialContext(properties);
+
+		// nome definido na documentação do ActiveMQ
+		ConnectionFactory cf = (ConnectionFactory) context.lookup("ConnectionFactory");
+		Connection connection = cf.createConnection();
+
+		connection.start();
+
+		// session necessária para criar o consumer
+		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+		
+		// pegamos a fila que foi criada no MOM, configurado no jndi.properties
+		Destination fila = (Destination) context.lookup("financeiro");
+		
+		QueueBrowser browser = session.createBrowser((Queue) fila);
+		Enumeration enumeration = browser.getEnumeration();
+		while (enumeration.hasMoreElements()) {
+			TextMessage message = (TextMessage) enumeration.nextElement();
+			System.out.println("Message: " + message.getText());
+		}
+		
+		System.out.println(browser.getMessageSelector());
+		
+		
+		session.close();
+		connection.close();
+		context.close();
+	}
+
+}

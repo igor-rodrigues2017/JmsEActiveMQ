@@ -1,0 +1,29 @@
+package br.com.igor.jms;
+
+import java.util.Scanner;
+
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.naming.InitialContext;
+
+public class TesteConsumer {
+	
+	@SuppressWarnings("resource")
+	public static void main(String[] args) throws Exception {
+		//contexto para fazer o lookup da conexeção do ActieMQ - 
+		//As propriedades são definidas no arquivo jndi.properties
+		InitialContext context = new InitialContext();
+		
+										//nome definido na documentação do ActiveMQ
+		ConnectionFactory cf = (ConnectionFactory) context.lookup("ConnectionFactory");
+		Connection connection = cf.createConnection();
+		
+		connection.start();
+		
+		new Scanner(System.in).nextLine();
+		
+		connection.close();
+		context.close();
+	}
+
+}
